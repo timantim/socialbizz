@@ -1,0 +1,33 @@
+<nav class="nav navbar-expand justify-content-between">
+  <div>
+    <a routerLink="."><img [src]="'assets/images/logo.png'" height="136" alt="" routerLink="/dashboard"></a>
+  </div>
+  <div class="mt-auto mb-4">
+    <button mat-raised-button [color]="activeRoute === 'dashboard' ? 'accent' : 'primary'" class="mr-3"
+            routerLink="/dashboard">
+      <mat-icon class="mb-1">home</mat-icon>
+      Home
+    </button>
+    <button mat-raised-button [color]="activeRoute === 'calendar' ? 'accent' : 'primary'" class="mr-3"
+            routerLink="/calendar">
+      <mat-icon class="mb-1">date_range</mat-icon>
+      Calendar
+    </button>
+    <button mat-raised-button [color]="activeRoute === 'library' ? 'accent' : 'primary'" class="mr-3"
+            routerLink="/library">
+      <mat-icon class="mb-1">collections</mat-icon>
+      Library
+    </button>
+    <button mat-raised-button [color]="activeRoute === 'analytics' ? 'accent' : 'primary'" class="mr-3"
+            routerLink="/analytics">
+      <mat-icon class="mb-1">notes</mat-icon>
+      Analytics
+    </button>
+  </div>
+  <div class="mt-auto mb-4">
+    <button mat-raised-button [color]="activeRoute === 'settings' ? 'accent' : 'primary'" routerLink=".">
+      <mat-icon class="mb-1">settings</mat-icon>
+      Settings
+    </button>
+  </div>
+</nav>
