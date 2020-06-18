@@ -8,6 +8,10 @@ import {SignInResult, User, UserInput} from '../models/auth.model';
 export class AuthService {
   constructor(private graphQlService: Apollo) {}
 
+  static getUserTokenFromLocalStorage(): string {
+    return localStorage.getItem('userToken') || '';
+  }
+
   login(input: UserInput): Promise<SignInResult> {
     return this.graphQlService.mutate({
       mutation: gql`
@@ -36,12 +40,8 @@ export class AuthService {
         }
       `,
       variables: {
-        token: this.getUserTokenFromLocalStorage()
+        token: AuthService.getUserTokenFromLocalStorage()
       }
     }).toPromise().then((result: ApolloQueryResult<{user: User}>) => result.data.user);
-  }
-
-  private getUserTokenFromLocalStorage(): string {
-    return localStorage.getItem('userToken') || '';
   }
 }
