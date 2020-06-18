@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardPageComponent } from '../modules/dashboard/dashboard-page/dashboard-page.component';
 import { CoreComponent } from './core.component';
-import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -26,9 +25,13 @@ const routes: Routes = [
         path: 'analytics',
         loadChildren: '../modules/analytics/analytics.module#AnalyticsModule'
       },
-      { path: '**', component: PageNotFoundComponent }
+      {
+        path: 'settings',
+        loadChildren: '../modules/settings/settings.module#SettingsModule'
+      }
     ]
-  }
+  },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({

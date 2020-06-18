@@ -1,0 +1,33 @@
+<div [formGroup]="form">
+  <div class="row mt-3">
+    <h5>Register to continue...</h5>
+  </div>
+  <div class="row mt-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Username / Email</mat-label>
+      <input matInput formControlName="login">
+    </mat-form-field>
+  </div>
+  <div class="row mt-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="row mt-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Repeat your password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="repeatPassword">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <button mat-raised-button color="primary" (click)="registerEvent.emit()" [disabled]="!form.valid">Login</button>
+  </div>
+  <div class="row mt-3">
+    <p>...already have an account? Click <a (click)="loginEvent.emit()" routerLink=".">here</a> to sign in!</p>
+  </div>
+</div>
