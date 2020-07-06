@@ -9,10 +9,6 @@ import {AmplifyService} from 'aws-amplify-angular';
 export class AuthService {
   constructor(private graphQlService: Apollo, public amplify: AmplifyService) {}
 
-  static getUserTokenFromLocalStorage(): string {
-    return localStorage.getItem('userToken') || '';
-  }
-
   login(input: UserInput): Promise<SignInResult> {
     return this.graphQlService.mutate({
       mutation: gql`
@@ -31,5 +27,9 @@ export class AuthService {
 
   getUser(): Promise<User | void> {
     return this.amplify.auth().currentAuthenticatedUser().then(user => ({username: user.getUsername() })).catch(console.log);
+  }
+
+  logout(): Promise<void> {
+    return this.amplify.auth().signOut();
   }
 }

@@ -4,7 +4,6 @@ import {
   AuthActionTypes,
   LogoutUser,
   LogoutUserSuccess,
-  SetUserTokenToLocalStorage,
   UserLogin,
   UserLoginSuccess
 } from './auth.actions';
@@ -26,28 +25,28 @@ export class AuthEffects {
     )
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   loginUserSuccess$ = this.actions$.pipe(
     ofType<UserLoginSuccess>(AuthActionTypes.USER_LOGIN_SUCCESS),
-    map(action => {
-      this.router.navigate(['/dashboard']);
-      return new SetUserTokenToLocalStorage(action.payload);
-    })
-  );
-
-  @Effect({dispatch: false})
-  setUserTokenToLocalStorage$ = this.actions$.pipe(
-    ofType<SetUserTokenToLocalStorage>(AuthActionTypes.SET_USER_TOKEN_TO_LOCAL_STORAGE),
-    map(action => localStorage.setItem('userToken', action.payload))
+    map(() =>
+      this.router.navigate(['/dashboard'])
+    )
   );
 
   @Effect()
   logoutUser$ = this.actions$.pipe(
     ofType<LogoutUser>(AuthActionTypes.LOGOUT_USER),
-    map(() => {
-      this.router.navigate(['/sign-in']);
-      localStorage.clear();
-      return new LogoutUserSuccess();
-    })
+    switchMap(() =>
+      this.authService
+        .logout()
+        .then(() => new LogoutUserSuccess())
+    )
+  );
+
+  @Effect({dispatch: false})
+  logoutUserSuccess$ = this.actions$.pipe(
+    ofType<LogoutUserSuccess>(AuthActionTypes.LOGOUT_USER_SUCCESS),
+    map(() =>
+    this.router.navigate(['/sign-in']))
   );
 }
