@@ -4,7 +4,7 @@ import {take} from 'rxjs/operators';
 import {AuthService} from '../services/auth.service';
 import {User} from '../models/auth.model';
 
-export async function getUserFromStateOrAPI(store$: Store < State > , authService: AuthService): Promise < User > {
+export async function getUserFromStateOrAPI(store$: Store < State > , authService: AuthService): Promise < User | void > {
   const user = await store$
     .pipe(
       select(state => state.user),

@@ -4,9 +4,9 @@ export class UserInput {
 }
 
 export class User {
-  id: number;
+  id?: number;
   username: string;
-  email: string;
+  email?: string;
 }
 
 export class SignInResult {

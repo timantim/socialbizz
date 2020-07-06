@@ -3,10 +3,11 @@ import gql from 'graphql-tag';
 import {ApolloQueryResult} from 'apollo-client';
 import {Apollo} from 'apollo-angular';
 import {SignInResult, User, UserInput} from '../models/auth.model';
+import {AmplifyService} from 'aws-amplify-angular';
 
 @Injectable()
 export class AuthService {
-  constructor(private graphQlService: Apollo) {}
+  constructor(private graphQlService: Apollo, public amplify: AmplifyService) {}
 
   static getUserTokenFromLocalStorage(): string {
     return localStorage.getItem('userToken') || '';
@@ -28,20 +29,7 @@ export class AuthService {
     }).toPromise().then((result: ApolloQueryResult<{signIn: SignInResult}>) => result.data.signIn);
   }
 
-  getUser(): Promise<User> {
-    return this.graphQlService.query({
-      query: gql`
-        query($token: String!){
-          user(token: $token) {
-            id
-            username
-            email
-          }
-        }
-      `,
-      variables: {
-        token: AuthService.getUserTokenFromLocalStorage()
-      }
-    }).toPromise().then((result: ApolloQueryResult<{user: User}>) => result.data.user);
+  getUser(): Promise<User | void> {
+    return this.amplify.auth().currentAuthenticatedUser().then(user => ({username: user.getUsername() })).catch(console.log);
   }
 }

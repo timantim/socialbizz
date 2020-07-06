@@ -3,6 +3,8 @@
 @include mat-core();
 
 @import './themes/palette';
+@import "~@aws-amplify/ui/src/Theme.css";
+@import "~@aws-amplify/ui/src/Angular.css";
 
 $client-primary: mat-palette($ig-blue, 500);
 $client-accent: mat-palette($ig-gray, 500);

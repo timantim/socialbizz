@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"socialbizz086c7569": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

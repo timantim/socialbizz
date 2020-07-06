@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-socialbizz-dev-162215-authRole",
+            "UnauthRoleArn": "arn:aws:iam::581553203626:role/amplify-socialbizz-dev-162215-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::581553203626:role/amplify-socialbizz-dev-162215-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-socialbizz-dev-162215-deployment",
+            "UnauthRoleName": "amplify-socialbizz-dev-162215-unauthRole",
+            "StackName": "amplify-socialbizz-dev-162215",
+            "StackId": "arn:aws:cloudformation:eu-central-1:581553203626:stack/amplify-socialbizz-dev-162215/b744cc00-bf8b-11ea-b54c-02b8022d5b40",
+            "AmplifyAppId": "d216hjpfjkiee3"
+        },
+        "categories": {
+            "auth": {
+                "socialbizz086c7569": {}
+            }
+        }
+    }
+}
