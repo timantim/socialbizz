@@ -1,20 +1,10 @@
 <div class="auth-background">
-  <mat-card class="auth-container">
-    <div class="row container">
-      <div class="col-7">
-        <img [src]="'assets/images/login.jpg'" alt="smm" class="w-100 auth-img">
-      </div>
-      <div class="col-5 login-container">
-        <ng-container *ngIf="authMode === 'login'; else register">
-          <app-login-form [form]="form" (registerEvent)="switchAuthMode()"
-                          (loginEvent)="loginEvent.emit()"></app-login-form>
-        </ng-container>
-        <ng-template #register>
-          <app-register-form [form]="form" (loginEvent)="switchAuthMode()"
-                             (registerEvent)="registerEvent.emit()"></app-register-form>
-        </ng-template>
-      </div>
+  <div class="auth-container">
+    <div class="col-md-6 col-0 px-0">
+      <img [src]="'assets/images/login.jpg'" alt="smm" class="auth-img d-none d-md-flex">
     </div>
-  </mat-card>
-
+    <div class="col-md-6 col-12 px-0">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

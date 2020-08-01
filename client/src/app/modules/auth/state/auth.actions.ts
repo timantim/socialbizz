@@ -1,19 +1,22 @@
-import {Action} from '@ngrx/store';
-import {User, UserInput} from '../../../shared/models/auth.model';
+import { Action } from '@ngrx/store';
+import { RegistrationConfirmInput, User, UserLoginInput, UserRegisterInput } from '../../../shared/models/auth.model';
 
 export enum AuthActionTypes {
   USER_LOGIN = '[Auth] Login',
   USER_LOGIN_SUCCESS = '[Auth] Login Success',
-  SET_USER_TOKEN_TO_LOCAL_STORAGE = '[Auth] Set user token to local storage',
+  USER_REGISTER = '[Auth] Register',
+  USER_REGISTER_SUCCESS = '[Auth] Register Success',
+  USER_REGISTER_CONFIRM = '[Auth] Register Confirm',
+  USER_REGISTER_CONFIRM_SUCCESS = '[Auth] Register Confirm Success',
   LOAD_USER_SUCCESS = '[Auth] Load User Success',
   LOGOUT_USER = '[Auth] Logout',
-  LOGOUT_USER_SUCCESS = '[Auth] Logout Success'
+  LOGOUT_USER_SUCCESS = '[Auth] Logout Success',
 }
 
 export class UserLogin implements Action {
   readonly type = AuthActionTypes.USER_LOGIN;
 
-  constructor(public payload: UserInput) {}
+  constructor(public payload: UserLoginInput) {}
 }
 
 export class UserLoginSuccess implements Action {
@@ -22,10 +25,24 @@ export class UserLoginSuccess implements Action {
   constructor(public payload: string) {}
 }
 
-export class SetUserTokenToLocalStorage implements Action {
-  readonly type = AuthActionTypes.SET_USER_TOKEN_TO_LOCAL_STORAGE;
+export class UserRegister implements Action {
+  readonly type = AuthActionTypes.USER_REGISTER;
 
-  constructor(public payload: string) {}
+  constructor(public payload: UserRegisterInput) {}
+}
+
+export class UserRegisterSuccess implements Action {
+  readonly type = AuthActionTypes.USER_REGISTER_SUCCESS;
+}
+
+export class UserRegisterConfirm implements Action {
+  readonly type = AuthActionTypes.USER_REGISTER_CONFIRM;
+
+  constructor(public payload: RegistrationConfirmInput) {}
+}
+
+export class UserRegisterConfirmSuccess implements Action {
+  readonly type = AuthActionTypes.USER_REGISTER_CONFIRM_SUCCESS;
 }
 
 export class LoadUserSuccess implements Action {
@@ -45,8 +62,10 @@ export class LogoutUserSuccess implements Action {
 export type AuthActionsUnion =
   | UserLogin
   | UserLoginSuccess
-  | SetUserTokenToLocalStorage
+  | UserRegister
+  | UserRegisterSuccess
+  | UserRegisterConfirm
+  | UserRegisterConfirmSuccess
   | LoadUserSuccess
   | LogoutUser
-  | LogoutUserSuccess
-  ;
+  | LogoutUserSuccess;

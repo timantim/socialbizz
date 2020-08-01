@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'sign-in',
+    path: '',
     loadChildren: './modules/auth/auth.module#AuthModule',
     canActivate: [LoginGuard]
   },

@@ -1,18 +1,19 @@
 @import '~@angular/material/theming';
 @import "~bootstrap/scss/bootstrap";
 @include mat-core();
-
 @import './themes/palette';
-@import "~@aws-amplify/ui/src/Theme.css";
-@import "~@aws-amplify/ui/src/Angular.css";
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
 
 $client-primary: mat-palette($ig-blue, 500);
 $client-accent: mat-palette($ig-gray, 500);
 $client-warn: mat-palette($mat-red);
-
 $client-theme: mat-light-theme($client-primary, $client-accent, $client-warn);
+$custom-typography: mat-typography-config(
+  $font-family: 'Signika'
+);
 
+@include angular-material-typography($custom-typography);
 @include angular-material-theme($client-theme);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }

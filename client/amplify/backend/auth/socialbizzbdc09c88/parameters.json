@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "socialbizz086c7569_identitypool_086c7569",
+    "identityPoolName": "socialbizzbdc09c88_identitypool_bdc09c88",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "social086c7569",
-    "userPoolName": "socialbizz086c7569_userpool_086c7569",
+    "resourceNameTruncated": "socialbdc09c88",
+    "userPoolName": "socialbizzbdc09c88_userpool_bdc09c88",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "social086c7569_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "socialbdc09c88_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "086c7569",
-    "resourceName": "socialbizz086c7569",
+    "sharedId": "bdc09c88",
+    "resourceName": "socialbizzbdc09c88",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,12 +45,15 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
-    "triggers": "{}",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
+    "usernameAttributes": [
+        "email"
+    ],
+    "hostedUIDomainName": "socialbizzbdc09c88-bdc09c88",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://localhost:4200/\"],\"LogoutURLs\":[\"https://localhost:4200/sign-in/\"]}",
     "userPoolGroupList": [],
-    "parentStack": {
-        "Ref": "AWS::StackId"
-    },
-    "permissions": [],
     "dependsOn": []
 }

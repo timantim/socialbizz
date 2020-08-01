@@ -1,15 +1,15 @@
-<div [formGroup]="form">
+<div [formGroup]="form" class="login-form">
   <div class="row mt-3">
-    <h5>Login to continue...</h5>
+    <h4 class="font-weight-bold">Member Login</h4>
   </div>
   <div class="row mt-3">
-    <mat-form-field appearance="fill">
-      <mat-label>Username / Email</mat-label>
-      <input matInput formControlName="login">
+    <mat-form-field>
+      <mat-label>E-mail Address</mat-label>
+      <input matInput placeholder="test@example.com" formControlName="login">
     </mat-form-field>
   </div>
   <div class="row mt-3">
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Enter your password</mat-label>
       <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
       <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
@@ -18,11 +18,13 @@
       </button>
     </mat-form-field>
   </div>
-  <div class="row">
-    <button mat-raised-button color="primary" (click)="loginEvent.emit()" [disabled]="form.invalid">Login</button>
+  <div class="row mt-3">
+    <button mat-raised-button color="primary" (click)="loginEvent.emit()" [disabled]="form.invalid" class="login-button">Login</button>
   </div>
   <div class="row mt-3">
-    <p>...or click <a (click)="registerEvent.emit()" routerLink=".">here</a> to register!</p>
+    <p>Forgot <a routerLink=".">Password?</a></p>
   </div>
-
+  <div class="row text-decoration-none">
+    <p><a routerLink="/register">Create your Account</a></p>
+  </div>
 </div>

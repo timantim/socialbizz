@@ -1,0 +1,24 @@
+<div [formGroup]="form" class="login-form">
+  <div class="row mt-3">
+    <h4 class="font-weight-bold">Confirm Registration</h4>
+    <p class="description">You've been sent an email with your access code. Please enter the access code in order to confirm your registration!</p>
+  </div>
+  <div class="row mt-3">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+  </div>
+  <div class="row mt-3">
+    <mat-form-field>
+      <mat-label>Code</mat-label>
+      <input matInput formControlName="code">
+    </mat-form-field>
+  </div>
+  <div class="row mt-3">
+    <button mat-raised-button color="primary" (click)="confirmRegisterEvent.emit()" [disabled]="form.invalid" class="login-button">Confirm!</button>
+  </div>
+  <div class="row mt-3">
+    <p>Lost your code? Click <a routerLink=".">here</a> to resend!</p>
+  </div>
+</div>

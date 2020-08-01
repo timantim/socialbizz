@@ -1,35 +1,35 @@
-import {Injectable} from '@angular/core';
-import gql from 'graphql-tag';
-import {ApolloQueryResult} from 'apollo-client';
-import {Apollo} from 'apollo-angular';
-import {SignInResult, User, UserInput} from '../models/auth.model';
-import {AmplifyService} from 'aws-amplify-angular';
+import { Injectable } from '@angular/core';
+import {
+  RegistrationConfirmInput,
+  SignInResult,
+  SignUpResult,
+  User,
+  UserLoginInput,
+  UserRegisterInput,
+} from '../models/auth.model';
+import { Auth } from 'aws-amplify';
 
 @Injectable()
 export class AuthService {
-  constructor(private graphQlService: Apollo, public amplify: AmplifyService) {}
+  login(input: UserLoginInput): Promise<SignInResult> {
+    return Auth.signIn(input.login, input.password);
+  }
 
-  login(input: UserInput): Promise<SignInResult> {
-    return this.graphQlService.mutate({
-      mutation: gql`
-        mutation($login: String!, $password: String!) {
-          signIn(login: $login, password: $password) {
-            token
-          }
-        }
-      `,
-      variables: {
-        login: input.login,
-        password: input.password
-      }
-    }).toPromise().then((result: ApolloQueryResult<{signIn: SignInResult}>) => result.data.signIn);
+  register(input: UserRegisterInput): Promise<SignUpResult> {
+    return Auth.signUp(input.email, input.password);
+  }
+
+  registerConfirm(input: RegistrationConfirmInput): Promise<void> {
+    return Auth.confirmSignUp(input.email, input.code);
   }
 
   getUser(): Promise<User | void> {
-    return this.amplify.auth().currentAuthenticatedUser().then(user => ({username: user.getUsername() })).catch(console.log);
+    return Auth.currentAuthenticatedUser()
+      .then((user) => ({ username: user.getUsername() }))
+      .catch(console.log);
   }
 
   logout(): Promise<void> {
-    return this.amplify.auth().signOut();
+    return Auth.signOut();
   }
 }

@@ -13,7 +13,9 @@
         },
         "categories": {
             "auth": {
-                "socialbizz086c7569": {}
+                "socialbizzbdc09c88": {
+                    "hostedUIProviderCreds": "[]"
+                }
             }
         }
     }

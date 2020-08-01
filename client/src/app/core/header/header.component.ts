@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { User } from '../../shared/models/auth.model';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   activeRoute: string;
+  @Input() user: User;
+  @Output() logout = new EventEmitter<void>();
 
   constructor(private router: Router) {}
 

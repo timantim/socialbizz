@@ -3,7 +3,7 @@ import { Component,  } from '@angular/core';
 @Component({
   selector: 'app-auth-page',
   template: `
-      <amplify-authenticator></amplify-authenticator>
+      <app-auth-container></app-auth-container>
   `
 })
 export class AuthPageComponent {}

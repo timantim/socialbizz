@@ -1,5 +1,13 @@
-export class UserInput {
+import { CognitoUser } from 'amazon-cognito-identity-js';
+
+export class UserLoginInput {
   login: string;
+  password: string;
+}
+
+export class UserRegisterInput {
+  email: string;
+  username: string;
   password: string;
 }
 
@@ -11,4 +19,14 @@ export class User {
 
 export class SignInResult {
   token: string;
+}
+
+export class SignUpResult {
+  user: CognitoUser;
+  userConfirmed: boolean;
+}
+
+export class RegistrationConfirmInput {
+  email: string;
+  code: string;
 }
