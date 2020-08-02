@@ -1,6 +1,7 @@
-import {AuthActionsUnion, AuthActionTypes} from './auth.actions';
-import {User} from '../../../shared/models/auth.model';
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { AuthActionsUnion, AuthActionTypes } from './auth.actions';
+import { User } from '../../../shared/models/auth.model';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { State } from '../../../state';
 
 export interface UserState {
   userToken: string;
@@ -11,7 +12,7 @@ export interface UserState {
 export const initialUserState: UserState = {
   userToken: '',
   user: null,
-  loading: false
+  loading: false,
 };
 
 export function userReducer(state: UserState = initialUserState, action: AuthActionsUnion): UserState {
@@ -19,26 +20,26 @@ export function userReducer(state: UserState = initialUserState, action: AuthAct
     case AuthActionTypes.USER_LOGIN: {
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     }
     case AuthActionTypes.USER_LOGIN_SUCCESS: {
       return {
         ...state,
         userToken: action.payload,
-        loading: false
+        loading: false,
       };
     }
     case AuthActionTypes.LOAD_USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
       };
     }
     case AuthActionTypes.LOGOUT_USER_SUCCESS: {
       return {
         ...state,
-        user: null
+        user: null,
       };
     }
     default: {
@@ -47,10 +48,6 @@ export function userReducer(state: UserState = initialUserState, action: AuthAct
   }
 }
 
-const selectUserState = createFeatureSelector<UserState>('user');
+const selectUserState = createFeatureSelector<State, UserState>('userState');
 
-export const selectUser = () =>
-  createSelector(
-    selectUserState,
-    state => state.user
-  );
+export const selectUser = () => createSelector(selectUserState, (state) => state.user);

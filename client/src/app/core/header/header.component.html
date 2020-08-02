@@ -1,33 +1,8 @@
-<nav class="header nav navbar-expand justify-content-between">
-  <div>
-    <h3><a routerLink="/dashboard">SocialBizz</a></h3>
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button (click)="sidenavRef.toggle()"><mat-icon class="white-text">menu</mat-icon></button>
+  <h1 class="white-text">SocialBizz.io</h1>
+  <div class="spacer"></div>
+  <div class="white-text mr-4 d-none d-sm-inline">
+    {{ user.email }}
   </div>
-  <div class="mt-auto mb-4">
-    <button mat-raised-button [color]="activeRoute === 'dashboard' ? 'accent' : 'primary'" class="mr-3"
-            routerLink="/dashboard">
-      <mat-icon class="mb-1">home</mat-icon>
-      Home
-    </button>
-    <button mat-raised-button [color]="activeRoute === 'calendar' ? 'accent' : 'primary'" class="mr-3"
-            routerLink="/calendar">
-      <mat-icon class="mb-1">date_range</mat-icon>
-      Calendar
-    </button>
-    <button mat-raised-button [color]="activeRoute === 'library' ? 'accent' : 'primary'" class="mr-3"
-            routerLink="/library">
-      <mat-icon class="mb-1">collections</mat-icon>
-      Library
-    </button>
-    <button mat-raised-button [color]="activeRoute === 'analytics' ? 'accent' : 'primary'" class="mr-3"
-            routerLink="/analytics">
-      <mat-icon class="mb-1">notes</mat-icon>
-      Analytics
-    </button>
-  </div>
-  <div class="mt-auto mb-4">
-    <button mat-raised-button [color]="activeRoute === 'settings' ? 'accent' : 'primary'" routerLink="/settings">
-      <mat-icon class="mb-1">settings</mat-icon>
-      Settings
-    </button>
-  </div>
-</nav>
+</mat-toolbar>

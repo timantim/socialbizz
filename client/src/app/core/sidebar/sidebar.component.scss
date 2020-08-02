@@ -1,0 +1,38 @@
+.sidenav {
+  width: 280px;
+}
+
+.sidenav-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-is-mobile .sidenav-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.sidenav-app-name {
+  margin-left: 8px;
+}
+
+.sidenav-sidenav-container {
+  flex: 1;
+}
+
+.sidenav-is-mobile .sidenav-sidenav-container {
+  flex: 1 0 auto;
+}
+
+.sidebar-icon {
+  margin: 0 0.75rem 0.25rem 0;
+}
+
+.link-active {
+  border-bottom: 2.5px solid #4158d0;
+}

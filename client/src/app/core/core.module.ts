@@ -8,9 +8,10 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { SmartHeaderComponent } from './smart-header/smart-header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [SmartHeaderComponent, HeaderComponent, FooterComponent, CoreComponent],
+  declarations: [SmartHeaderComponent, HeaderComponent, FooterComponent, SidebarComponent, CoreComponent],
   imports: [CommonModule, CoreRoutingModule, DashboardModule, RouterModule, SharedModule],
 })
 export class CoreModule {}

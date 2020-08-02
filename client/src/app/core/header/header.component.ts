@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from '../../shared/models/auth.model';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { User } from '../../shared/models/auth.model';
 export class HeaderComponent implements OnInit {
   activeRoute: string;
   @Input() user: User;
+  @Input() sidenavRef: MatSidenav;
   @Output() logout = new EventEmitter<void>();
 
   constructor(private router: Router) {}

@@ -1,12 +1,12 @@
-import {ActionReducerMap, MetaReducer} from '@ngrx/store';
-import {userReducer, UserState} from '../modules/auth/state/auth.reducer';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { userReducer, UserState } from '../modules/auth/state/auth.reducer';
 
 export interface State {
-  user: UserState;
+  userState: UserState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  user: userReducer
+  userState: userReducer,
 };
 
 export const metaReducers: Array<MetaReducer<State>> = [];

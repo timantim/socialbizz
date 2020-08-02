@@ -25,8 +25,10 @@ export class AuthService {
 
   getUser(): Promise<User | void> {
     return Auth.currentAuthenticatedUser()
-      .then((user) => ({ username: user.getUsername() }))
-      .catch(console.log);
+      .then((user) => {
+        return { username: user.getUsername(), email: user.attributes && user.attributes.email };
+      })
+      .catch(() => null);
   }
 
   logout(): Promise<void> {
