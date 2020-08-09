@@ -1,5 +1,8 @@
-type SocialAccount @model {
+type SocialAccount
+@model
+@auth(rules: [{allow: owner}]) {
   id: ID!
-  username: String!
-  apiKey: String
+  name: String!
+  status: String!
+  key: String!
 }
