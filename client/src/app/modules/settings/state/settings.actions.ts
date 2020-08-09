@@ -1,13 +1,13 @@
 import { Action } from '@ngrx/store';
 
 export enum SettingsActionTypes {
-  AUTHENTICATE_INSTAGRAM_USER = '[Settings] Authenticate Instagram User',
+  EXCHANGE_INSTAGRAM_CODE_FOR_TOKEN = '[Settings] Exchange Instagram Code To Token',
 }
 
-export class AuthenticateInstagramUser implements Action {
-  readonly type = SettingsActionTypes.AUTHENTICATE_INSTAGRAM_USER;
+export class ExchangeInstagramCodeForToken implements Action {
+  readonly type = SettingsActionTypes.EXCHANGE_INSTAGRAM_CODE_FOR_TOKEN;
 
   constructor(public payload: string) {}
 }
 
-export type SettingsActionsUnion = AuthenticateInstagramUser;
+export type SettingsActionsUnion = ExchangeInstagramCodeForToken;

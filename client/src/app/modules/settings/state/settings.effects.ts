@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
-import { AuthenticateInstagramUser, SettingsActionTypes } from './settings.actions';
+import { ExchangeInstagramCodeForToken, SettingsActionTypes } from './settings.actions';
+import { InstagramApiWrapperService } from '../../../shared/services/instagram-api-wrapper.service';
 
 @Injectable()
 export class SettingsEffects {
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private instagramApiWrapperService: InstagramApiWrapperService) {}
 
-  @Effect()
+  @Effect({dispatch: false})
   authenticateInstagramUser$ = this.actions$.pipe(
-    ofType<AuthenticateInstagramUser>(SettingsActionTypes.AUTHENTICATE_INSTAGRAM_USER),
-    map((action) => action)
+    ofType<ExchangeInstagramCodeForToken>(SettingsActionTypes.EXCHANGE_INSTAGRAM_CODE_FOR_TOKEN),
+    map(action => this.instagramApiWrapperService.exchangeCodeForToken(action.payload).subscribe(console.log)),
   );
 }
