@@ -19,7 +19,6 @@ export class SmartHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$ = this.store.select(selectUser());
-    this.store.select(selectUser()).subscribe(console.log);
   }
 
   logout(): void {

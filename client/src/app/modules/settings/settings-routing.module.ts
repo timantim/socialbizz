@@ -2,16 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsPageComponent } from './pages/settings-page.component';
 
-
 const routes: Routes = [
   {
     path: '',
-    component: SettingsPageComponent
-  }
+    component: SettingsPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SettingsRoutingModule { }
+export class SettingsRoutingModule {}
